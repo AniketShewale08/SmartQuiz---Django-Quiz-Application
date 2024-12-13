@@ -46,47 +46,45 @@ Before setting up the project, ensure you have the following:
 
 - Setup Instructions
   1. Clone the repository
-  Clone the project from GitHub using the following command:
+     Clone the project from GitHub using the following command:
 
-    git clone https://github.com/your-username/smartquiz.git
-    cd smartquiz
+     git clone https://github.com/your-username/smartquiz.git
+     cd smartquiz
 
   2. Create a new Anaconda environment (Optional but recommended)
-  If you are using Anaconda, create a new environment for the project.
-  This ensures that dependencies are isolated:
-  
-  bash
-    conda create --name smartquiz-env python=3.8
+     If you are using Anaconda, create a new environment for the project.
+     This ensures that dependencies are isolated:
+ 
+     conda create --name smartquiz-env python=3.8
 
   3. Activate the environment
-  Activate the newly created environment:
-
-    conda activate smartquiz-env
+     Activate the newly created environment:
+   
+     conda activate smartquiz-env
 
   4. Apply migrations to set up the database
-  Run the following command to apply Django’s database migrations:
-
-    python manage.py migrate  
-
-  This will set up the default SQLite database and create necessary tables for users, quizzes, and questions.
+     Run the following command to apply Django’s database migrations:
+   
+       python manage.py migrate  
+     This will set up the default SQLite database and create necessary tables for users, quizzes, and questions.
 
   5. Create a superuser for admin access
-  To manage the app via the Django admin panel, create a superuser:
-
-    python manage.py createsuperuser
-  Follow the prompts to set up the superuser (username, email, and password).
+     To manage the app via the Django admin panel, create a superuser:
+   
+       python manage.py createsuperuser
+     Follow the prompts to set up the superuser (username, email, and password).
 
   6. Run the development server
-  Now, run the Django development server:
-  
-    python manage.py runserver
-  By default, the app will be accessible at http://127.0.0.1:8000/.
+     Now, run the Django development server:
+     
+       python manage.py runserver
+     By default, the app will be accessible at http://127.0.0.1:8000/.
 
   7. Access the admin panel
-  To manage your quizzes, questions, and user data, you can access the Django admin panel by going to:
-    http://127.0.0.1:8000/admin/
-
-  Log in with the superuser credentials you created earlier.
+     To manage your quizzes, questions, and user data, you can access the Django admin panel by going to:
+       http://127.0.0.1:8000/admin/
+   
+     Log in with the superuser credentials you created earlier.
 
 - Usage
 
