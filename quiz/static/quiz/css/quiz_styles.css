@@ -1,0 +1,32 @@
+/* Start Quiz */
+.quiz-container {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.quiz-heading {
+    text-align: center;
+    color: #0080ff;
+}
+
+.quiz-question {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.quiz-options .form-check {
+    margin-bottom: 1rem;
+}
+
+.quiz-submit-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.quiz-submit-button button {
+    padding: 10px 20px;
+    font-size: 16px;
+}

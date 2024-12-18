@@ -1,27 +1,24 @@
 from django import forms
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
+from .models import QuizType, Question
 
+class QuizForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs.update({'class': 'form-control'})
-        
-        self.fields['username'].help_text = None
-        self.fields['email'].help_text = None
-        self.fields['password1'].help_text = None
-        self.fields['password2'].help_text = None
+        model = QuizType
+        fields = ['name', 'description']
 
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.email = self.cleaned_data['email']
-        if commit:
-            user.save()
-        return user
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if QuizType.objects.filter(name=name).exclude(pk=self.instance.pk).exists():
+            raise forms.ValidationError("A quiz with this name already exists.")        
+        return name
     
+class QuestionForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ['question_text', 'option_a', 'option_b', 'option_c', 'option_d', 'correct_answer']
+
+    def clean_question_text(self):
+        question_text = self.cleaned_data.get('question_text')
+        if Question.objects.filter(question_text=question_text).exclude(pk=self.instance.pk).exists():
+            raise forms.ValidationError("Question already exists.")
+        return question_text
